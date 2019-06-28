@@ -66,7 +66,7 @@ for in_idx in tqdm(range(len(train_lines))):
     gt_file, gt_calib, im_size, im_file, cams = read_file_data_new(train_lines[in_idx], data_path)
     # print('cams:', cams)
     camera_id = cams[0]
-    depth = generate_depth_map(gt_calib[0], gt_file[0], im_size[0], camera_id, False, True)
+    depth = generate_depth_map(gt_calib[0], gt_file[0], im_size[0], camera_id, False, False)
     print(depth)
     print(np.max(depth), np.min(depth))
 
