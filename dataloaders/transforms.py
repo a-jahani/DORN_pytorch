@@ -3,6 +3,8 @@ import torch
 import math
 import random
 
+import cv2
+
 from PIL import Image, ImageOps, ImageEnhance
 try:
     import accimage
@@ -334,9 +336,17 @@ class Resize(object):
             PIL Image: Rescaled image.
         """
         if img.ndim == 3:
-            return misc.imresize(img, self.size, self.interpolation)
+            # return img.resize(int(img.shape[1] * self.size), int(img.shape[0] * self.size), Image.BILINEAR)
+            # return img.resize(int(img.width * self.size), int(img.height * self.size), Image.BILINEAR)*1.0 #to make it float?!
+
+            return cv2.resize(img, None, fx=self.size, fy=self.size, interpolation= cv2.INTER_NEAREST)
         elif img.ndim == 2:
-            return misc.imresize(img, self.size, self.interpolation, 'F')
+            cv2.resize(img, None, fx=self.size, fy=self.size, interpolation= cv2.INTER_NEAREST)#*1.0
+            #img.astype(float)
+            print('depth dtype:',img.dtype)
+            return img
+
+            # return img.resize(int(img.shape[1] * self.size), int(img.shape[0] * self.size), Image.BILINEAR)*1.0 #to make it float?!
         else:
             RuntimeError('img should be ndarray with 2 or 3 dimensions. Got {}'.format(img.ndim))
 

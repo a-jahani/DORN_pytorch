@@ -217,7 +217,7 @@ class DORN(nn.Module):
 
     def forward(self, x):
         x1 = self.feature_extractor(x)
-        # print(x1.size())
+        print('resnet output', x1.size())
         x2 = self.aspp_module(x1)
         # print('DORN x2 size:', x2.size())
         depth_labels, ord_labels = self.orl(x2)

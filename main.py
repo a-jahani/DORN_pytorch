@@ -116,7 +116,7 @@ def main():
         torch.cuda.empty_cache()
     else:
         print("=> creating Model")
-        model = get_models(args.dataset)
+        model = get_models(args.dataset,pretrained=False)
         print("=> model created.")
         start_epoch = 0
 

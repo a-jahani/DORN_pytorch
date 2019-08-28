@@ -32,6 +32,10 @@ MANIFEST
 *.pptx
 *.caffemodel
 result/
+pretrained_models/
+tool/nyu_official/
+tool/nyu_depth_v2_labeled.mat
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
